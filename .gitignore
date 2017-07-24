@@ -99,3 +99,12 @@ ENV/
 
 # mypy
 .mypy_cache/
+.idea/django_smart_bookshelf.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+templates/
+my.cnf
+.idea/deployment.xml
+.idea/webServers.xml
