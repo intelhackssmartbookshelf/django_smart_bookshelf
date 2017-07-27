@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from rest_framework import permissions, routers, serializers, viewsets
-
+from .views import api_saveSelf
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
 
 
