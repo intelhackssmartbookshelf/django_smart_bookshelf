@@ -15,13 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from bookshelf.api import router
-from bookshelf.views import api_saveSelf, api_saveToken
+from bookshelf.views import api_saveSelf, api_saveToken, api_sendMsg, api_saveTotalLength, BooksViewSet, api_getBookshelf
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'books', BooksViewSet, base_name='Booklist')
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/shelf/', include(router.urls)),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^', include(router.urls)),
     url(r'^location/', api_saveSelf),
-    url(r'^fcmtoken/', api_saveToken)
+    url(r'^fcmtoken/', api_saveToken),
+    url(r'^send_msg/', api_sendMsg),
+    url(r'^set_totallen/', api_saveTotalLength),
+    url(r'^bookshelf/', api_getBookshelf),
 ]
